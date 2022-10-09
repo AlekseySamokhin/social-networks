@@ -1,0 +1,13 @@
+.dialogs_item {
+    padding-top: 10px;
+}
+
+.dialogs_link {
+    text-decoration: none;
+    color: white;
+}
+
+.dialogs_link_active {
+    text-decoration: none;
+    color: red;
+}
