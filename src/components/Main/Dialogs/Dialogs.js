@@ -1,12 +1,25 @@
+import React from "react";
+
 import DialogItem from "./DialogItem";
 import DialogMessage from "./DialogMessage";
 
 import styles from "./Dialogs.module.css";
 
 const Dialogs = (props) => {
-    const {state} = props;
+    const {state, addMessage, updateNewMessageText} = props;
 
-    const {dialogs, messages} = state;
+    const {dialogs, messages, newMessageText} = state;
+
+    const newMessageElement = React.createRef();
+
+    const addNewMessage = () => {
+        addMessage();
+    };
+
+    const onChangeMessage = () => {
+        const text = newMessageElement.current.value;
+        updateNewMessageText(text);
+    }
 
     return (
         <div className={styles.dialogs}>
@@ -23,6 +36,15 @@ const Dialogs = (props) => {
                         <DialogMessage key={index} id={message.id} message={message.message}/>
                     ))
                 }
+
+                <div className={styles.textarea}>
+                    <textarea
+                        onChange={onChangeMessage}
+                        value={newMessageText}
+                        ref={newMessageElement}
+                    />
+                    <button onClick={addNewMessage}>Add message</button>
+                </div>
             </div>
         </div>
     );

@@ -7,7 +7,7 @@ import Navbar from "./components/Navbar";
 import styles from "./App.module.css";
 
 const App = (props) => {
-    const {state} = props;
+    const {state, addPost, addMessage, updateNewPostText, updateNewMessageText} = props;
     const {sideBar, ...mainData } = state;
 
     return (
@@ -15,7 +15,13 @@ const App = (props) => {
             <div className={styles.wrapper}>
                 <Header/>
                 <div className={styles.main}>
-                    <Main state={mainData}/>
+                    <Main
+                        addPost={addPost}
+                        addMessage={addMessage}
+                        updateNewMessageText={updateNewMessageText}
+                        updateNewPostText={updateNewPostText}
+                        state={mainData}
+                    />
                 </div>
                 <Navbar state={sideBar}/>
             </div>

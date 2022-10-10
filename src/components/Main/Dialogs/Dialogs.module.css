@@ -3,3 +3,8 @@
     display: grid;
     grid-template-columns: 2fr 10fr;
 }
+
+.textarea {
+    display: flex;
+    padding-top: 20px;
+}

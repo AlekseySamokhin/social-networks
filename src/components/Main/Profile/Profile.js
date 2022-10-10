@@ -4,13 +4,12 @@ import UserInfo from "./UserInfo";
 import styles from "./Profile.module.css";
 
 const Profile = (props) => {
-    const { state } = props;
-    const { posts } = state;
+    const { state, addPost, updateNewPostText } = props;
 
     return (
         <main>
             <UserInfo />
-            <MyPosts posts={posts} />
+            <MyPosts updateNewPostText={updateNewPostText} addPost={addPost} state={state} />
         </main>
     );
 };
