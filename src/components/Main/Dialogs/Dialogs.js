@@ -5,22 +5,20 @@ import DialogMessage from "./DialogMessage";
 
 import styles from "./Dialogs.module.css";
 
-import { addMessageActionCreator, updateNewMessageTextActionCreator } from "../../../redux/state";
+import { addMessageCreator, updateNewMessageTextCreator } from "../../../redux/dialogsRerucer";
 
 const Dialogs = (props) => {
     const {state, dispatch} = props;
 
     const {dialogs, messages, newMessageText} = state;
 
-    const newMessageElement = React.createRef();
-
-    const addNewMessage = () => {
-        dispatch(addMessageActionCreator());
+    const onSendMessageClick = () => {
+        dispatch(addMessageCreator());
     };
 
-    const onChangeMessage = () => {
-        const text = newMessageElement.current.value;
-        dispatch(updateNewMessageTextActionCreator(text));
+    const onNewMessageChange = (e) => {
+        const text = e.target.value;
+        dispatch(updateNewMessageTextCreator(text));
     }
 
     return (
@@ -41,11 +39,11 @@ const Dialogs = (props) => {
 
                 <div className={styles.textarea}>
                     <textarea
-                        onChange={onChangeMessage}
+                        placeholder="Enter you message..."
+                        onChange={onNewMessageChange}
                         value={newMessageText}
-                        ref={newMessageElement}
                     />
-                    <button onClick={addNewMessage}>Add message</button>
+                    <button onClick={onSendMessageClick}>Add message</button>
                 </div>
             </div>
         </div>

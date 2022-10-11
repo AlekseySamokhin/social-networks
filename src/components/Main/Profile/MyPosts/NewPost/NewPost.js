@@ -2,33 +2,31 @@ import React from "react";
 
 import styles from "./NewPost.module.css";
 
-import { addPostActionCreator, updateNewPostTextActionCreator } from "../../../../../redux/state";
+import { addPostCreator, updateNewPostTextCreator } from "../../../../../redux/profileReducer";
 
 const NewPost = (props) => {
     const {dispatch, newPostText} = props;
 
-    const newPostElement = React.createRef();
-
-    const addNewPost = () => {
-        dispatch(addPostActionCreator());
+    const onSendPostClick = () => {
+        dispatch(addPostCreator());
     }
 
-    const onChangePost = () => {
-        let text = newPostElement.current.value;
-        dispatch(updateNewPostTextActionCreator(text));
+    const onNewPostChange = (e) => {
+        let text = e.target.value;
+        dispatch(updateNewPostTextCreator(text));
     }
 
     return (
         <div className={styles.newPost}>
             <div>
                 <textarea
-                    onChange={onChangePost}
-                    ref={newPostElement}
+                    placeholder="Enter you post..."
+                    onChange={onNewPostChange}
                     value={newPostText}
                 />
             </div>
             <div>
-                <button onClick={addNewPost}>
+                <button onClick={onSendPostClick}>
                     Add post
                 </button>
             </div>
