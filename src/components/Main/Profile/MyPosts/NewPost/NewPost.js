@@ -3,17 +3,20 @@ import React from "react";
 import styles from "./NewPost.module.css";
 
 const NewPost = (props) => {
-    const { addPost, updateNewPostText, newPostText } = props;
+    const {dispatch, newPostText} = props;
 
     const newPostElement = React.createRef();
 
     const addNewPost = () => {
-        addPost();
+        const action = {type: "ADD-POST"}
+        dispatch(action);
     }
 
     const onChangePost = () => {
         let text = newPostElement.current.value;
-        updateNewPostText(text);
+
+        const action = {type: "UPDATE-NEW-POST-TEXT", newText: text};
+        dispatch(action);
     }
 
     return (

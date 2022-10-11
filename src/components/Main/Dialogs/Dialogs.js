@@ -6,19 +6,24 @@ import DialogMessage from "./DialogMessage";
 import styles from "./Dialogs.module.css";
 
 const Dialogs = (props) => {
-    const {state, addMessage, updateNewMessageText} = props;
+    const {state, dispatch} = props;
 
     const {dialogs, messages, newMessageText} = state;
 
     const newMessageElement = React.createRef();
 
     const addNewMessage = () => {
-        addMessage();
+        let action = {type: "ADD-MESSAGE"};
+        dispatch(action);
     };
 
     const onChangeMessage = () => {
         const text = newMessageElement.current.value;
-        updateNewMessageText(text);
+        let action = {
+            type: "UPDATE-NEW-MESSAGE-TEXT",
+            newText: text
+        };
+        dispatch(action);
     }
 
     return (

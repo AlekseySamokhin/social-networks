@@ -7,7 +7,7 @@ import Navbar from "./components/Navbar";
 import styles from "./App.module.css";
 
 const App = (props) => {
-    const {state, addPost, addMessage, updateNewPostText, updateNewMessageText} = props;
+    const {state, dispatch} = props;
     const {sideBar, ...mainData } = state;
 
     return (
@@ -16,10 +16,7 @@ const App = (props) => {
                 <Header/>
                 <div className={styles.main}>
                     <Main
-                        addPost={addPost}
-                        addMessage={addMessage}
-                        updateNewMessageText={updateNewMessageText}
-                        updateNewPostText={updateNewPostText}
+                        dispatch={dispatch}
                         state={mainData}
                     />
                 </div>
