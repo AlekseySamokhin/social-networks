@@ -5,7 +5,7 @@ import DialogMessage from "./DialogMessage";
 
 import styles from "./Dialogs.module.css";
 
-import { addMessageCreator, updateNewMessageTextCreator } from "../../../redux/dialogsRerucer";
+import { addMessageCreator, updateNewMessageTextCreator } from "../../../redux/dialogsReducer";
 
 const Dialogs = (props) => {
     const {state, dispatch} = props;

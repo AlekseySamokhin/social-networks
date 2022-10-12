@@ -7,8 +7,6 @@ import styles from "./Navbar.module.css";
 const Navbar = (props) => {
     const {state} = props;
 
-    const {friends} = state;
-
     return (
         <div className={styles.sidebar}>
             <nav>
@@ -35,7 +33,7 @@ const Navbar = (props) => {
                     </li>
                 </ul>
             </nav>
-            <FriendsList friends={friends}/>
+            <FriendsList state={state.sidebar.friends} />
         </div>
     );
 };

@@ -7,8 +7,7 @@ import Navbar from "./components/Navbar";
 import styles from "./App.module.css";
 
 const App = (props) => {
-    const {state, dispatch} = props;
-    const {sideBar, ...mainData } = state;
+    const {state, dispatch } = props;
 
     return (
         <Router>
@@ -17,10 +16,10 @@ const App = (props) => {
                 <div className={styles.main}>
                     <Main
                         dispatch={dispatch}
-                        state={mainData}
+                        state={state}
                     />
                 </div>
-                <Navbar state={sideBar}/>
+                <Navbar state={state}/>
             </div>
         </Router>
     );
