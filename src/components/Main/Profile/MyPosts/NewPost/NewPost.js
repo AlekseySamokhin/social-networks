@@ -1,19 +1,15 @@
-import React from "react";
-
 import styles from "./NewPost.module.css";
 
-import { addPostCreator, updateNewPostTextCreator } from "../../../../../redux/profileReducer";
-
 const NewPost = (props) => {
-    const {dispatch, newPostText} = props;
+    const {addPost, updateNewPostText, newPostText} = props;
 
     const onSendPostClick = () => {
-        dispatch(addPostCreator());
+        addPost();
     }
 
     const onNewPostChange = (e) => {
         let text = e.target.value;
-        dispatch(updateNewPostTextCreator(text));
+        updateNewPostText(text);
     }
 
     return (

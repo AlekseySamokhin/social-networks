@@ -16,6 +16,7 @@ const initialState = {
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
+            console.log("TUT");
             let newPost = {
                 id: 5,
                 message: state.newPostText,
@@ -35,6 +36,7 @@ const profileReducer = (state = initialState, action) => {
 };
 
 export const addPostCreator = () => ({type: ADD_POST});
+
 export const updateNewPostTextCreator = (text) => ({
     type: UPDATE_NEW_POST_TEXT,
     newText: text,

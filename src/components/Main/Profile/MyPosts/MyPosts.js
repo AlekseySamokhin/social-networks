@@ -2,24 +2,23 @@ import NewPost from "./NewPost";
 import Post from "./Post";
 
 import styles from "./MyPosts.module.css";
+import NewPostContainer from "./NewPost/NewPostContainer";
 
 const MyPosts = (props) => {
-    const { state, dispatch } = props;
+    const {store} = props;
 
-    const {posts, newPostText} = state;
+    const posts = store.getState().profilePage.posts;
+
+    const postsElements = posts.map((post, index) => (
+        <Post key={index} id={post.id} likes={post.likesCount} message={post.message}/>
+    ))
 
     return (
-            <div>
-                <h3 className={styles.myPosts}>My post</h3>
-                <NewPost newPostText={newPostText} dispatch={dispatch} />
-                <div>
-                    {
-                        posts.map((post, index) => (
-                            <Post key={index} id={post.id} likes={post.likesCount} message={post.message} />
-                        ))
-                    }
-                </div>
-            </div>
+        <div>
+            <h3 className={styles.myPosts}>My post</h3>
+            <NewPostContainer store={store}/>
+            <div>{postsElements}</div>
+        </div>
     );
 };
 
